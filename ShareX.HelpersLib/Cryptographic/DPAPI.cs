@@ -1,4 +1,4 @@
-﻿#region License Information (GPL v3)
+#region License Information (GPL v3)
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
@@ -24,11 +24,21 @@
 #endregion License Information (GPL v3)
 
 using System;
+#if WINDOWS
 using System.Security.Cryptography;
+#endif
 using System.Text;
 
 namespace ShareX.HelpersLib
 {
+#if !WINDOWS
+    public enum DataProtectionScope
+    {
+        CurrentUser,
+        LocalMachine
+    }
+#endif
+
     // https://en.wikipedia.org/wiki/Data_Protection_API
     public static class DPAPI
     {
@@ -50,8 +60,12 @@ namespace ShareX.HelpersLib
 
         public static string Encrypt(byte[] data, byte[] optionalEntropy = null, DataProtectionScope scope = DataProtectionScope.CurrentUser)
         {
+#if WINDOWS
             byte[] encryptedData = ProtectedData.Protect(data, optionalEntropy, scope);
             return Convert.ToBase64String(encryptedData);
+#else
+            return Convert.ToBase64String(data);
+#endif
         }
 
         public static string Decrypt(string encryptedString, string optionalEntropy = null, DataProtectionScope scope = DataProtectionScope.CurrentUser)
@@ -72,8 +86,12 @@ namespace ShareX.HelpersLib
 
         public static string Decrypt(byte[] encryptedData, byte[] optionalEntropy = null, DataProtectionScope scope = DataProtectionScope.CurrentUser)
         {
+#if WINDOWS
             byte[] decryptedData = ProtectedData.Unprotect(encryptedData, optionalEntropy, scope);
             return Encoding.UTF8.GetString(decryptedData);
+#else
+            return Encoding.UTF8.GetString(encryptedData);
+#endif
         }
     }
 }

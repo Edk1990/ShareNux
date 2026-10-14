@@ -33,7 +33,9 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+#if WINDOWS
 using System.Media;
+#endif
 using System.Net.NetworkInformation;
 using System.Reflection;
 using System.Resources;
@@ -377,6 +379,7 @@ namespace ShareX.HelpersLib
             return time;
         }
 
+#if WINDOWS
         public static void PlaySound(Stream stream)
         {
             if (stream != null)
@@ -420,6 +423,11 @@ namespace ShareX.HelpersLib
                 });
             }
         }
+#else
+        public static void PlaySound(Stream stream) { }
+        public static void PlaySoundSync(Stream stream) { }
+        public static void PlaySoundAsync(string filePath) { }
+#endif
 
         public static bool WaitWhile(Func<bool> check, int interval, int timeout = -1)
         {

@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net10.0-windows</TargetFramework>
+    <TargetFrameworks>net10.0;net10.0-windows</TargetFrameworks>
     <OutputType>Library</OutputType>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
@@ -9,9 +9,19 @@
     <PackageReference Include="Newtonsoft.Json" />
     <PackageReference Include="SkiaSharp" />
   </ItemGroup>
-  <ItemGroup>
+  <ItemGroup Condition="$(TargetFramework.EndsWith('-windows'))">
     <!-- Existing Windows printing and shell icon interop still require System.Drawing.Common. -->
     <FrameworkReference Include="Microsoft.WindowsDesktop.App" />
+  </ItemGroup>
+  <ItemGroup Condition="!$(TargetFramework.EndsWith('-windows'))">
+    <Compile Remove="Printer\PrintHelper.cs" />
+    <Compile Remove="Printer\PrintTextHelper.cs" />
+    <Compile Remove="Printer\WindowsPrintDialog.cs" />
+    <Compile Remove="Native\WindowsPrintInterop.cs" />
+    <Compile Remove="Presentation\Print\**" />
+    <AvaloniaResource Remove="Presentation\Print\**" />
+    <AvaloniaXaml Remove="Presentation\Print\**" />
+    <None Remove="Presentation\Print\**" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ShareX.Avalonia\ShareX.Avalonia.csproj" />

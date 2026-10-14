@@ -1,4 +1,4 @@
-﻿#region License Information (GPL v3)
+#region License Information (GPL v3)
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
@@ -164,7 +164,9 @@ namespace ShareX.HelpersLib
             }
         }
 
+#if WINDOWS
         public Icon Icon => NativeMethods.GetApplicationIcon(Handle);
+#endif
 
         public bool IsMaximized => NativeMethods.IsZoomed(Handle);
 
