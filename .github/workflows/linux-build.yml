@@ -1,0 +1,52 @@
+name: Build ShareX Linux
+
+on:
+  push:
+    branches:
+      - develop
+      - main
+      - "feature/**"
+    paths:
+      - "ShareX.HelpersLib/**"
+      - "ShareX.UploadersLib/**"
+      - "ShareX.ImageEditor/**"
+      - "ShareX.ImageEditor.App/**"
+      - "ShareX.Avalonia/**"
+      - "ShareX.Linux/**"
+      - ".github/workflows/linux-build.yml"
+  pull_request:
+    branches:
+      - develop
+      - main
+    paths:
+      - "ShareX.HelpersLib/**"
+      - "ShareX.UploadersLib/**"
+      - "ShareX.ImageEditor/**"
+      - "ShareX.ImageEditor.App/**"
+      - "ShareX.Avalonia/**"
+      - "ShareX.Linux/**"
+
+jobs:
+  build-linux:
+    name: Build & Test (Ubuntu Linux)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Install Native AOT & System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang zlib1g-dev libkrb5-dev libdbus-1-dev
+
+      - name: Build Core Components (net10.0)
+        run: |
+          dotnet build ShareX.Avalonia/ShareX.Avalonia.csproj -c Release
+          dotnet build ShareX.ImageEditor/ShareX.ImageEditor.csproj -c Release
+          dotnet build ShareX.ImageEditor.App/ShareX.ImageEditor.App.csproj -c Release
