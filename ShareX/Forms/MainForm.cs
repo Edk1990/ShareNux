@@ -26,13 +26,14 @@
 #nullable enable
 
 using ShareX.HelpersLib;
+using ShareX.HelpersLib.Input;
 using System;
 using System.Threading.Tasks;
 
 namespace ShareX;
 
 /// <summary>
-/// Coordinates the Windows hotkey host and desktop notification-area icon.
+/// Coordinates the platform hotkey host and desktop notification-area icon.
 /// Avalonia owns the application lifetime and all visible windows.
 /// </summary>
 internal sealed class MainForm
@@ -43,7 +44,7 @@ internal sealed class MainForm
 
     public MainForm()
     {
-        _hotkeyHost = new WindowsHotkeyHost();
+        _hotkeyHost = HotkeyHostFactory.CreateHost();
         _hotkeyHost.NativeMessageReceived += OnNativeMessage;
         _hotkeyHost.Closed += OnHostClosed;
 
@@ -91,6 +92,8 @@ internal sealed class MainForm
 
     private void OnNativeMessage(object? sender, NativeWindowMessageEventArgs m)
     {
+        if (!OperatingSystem.IsWindows()) return;
+
         if (m.Message == (int)WindowsMessages.QUERYENDSESSION)
         {
             EndSessionReasons reason = (EndSessionReasons)m.LParam.ToInt64();
