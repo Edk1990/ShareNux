@@ -1,16 +1,17 @@
-# ShareX Linux Port Initiative
+# ShareNux — Documentação Técnica
 
-> **Projeto:** Port e Modernização do ShareX para Linux  
+> **Projeto:** ShareNux (Modernização do ShareX para Linux)  
+> **Repositório:** [https://github.com/Edk1990/ShareNux](https://github.com/Edk1990/ShareNux)  
 > **Estratégia:** Arquitetura Greenfield / CLI-First com C# .NET 10 + Native AOT + Avalonia UI  
-> **Status:** Planejamento e Estruturação Inicial  
+> **Status:** Milestone 1 Concluído  
 
 ---
 
 ## 📌 Visão Geral
 
-Este diretório contém a documentação técnica oficial, decisões de arquitetura e o planejamento operacional para a criação da versão Linux do **ShareX**.
+Este diretório contém a documentação técnica oficial, decisões de arquitetura e o planejamento operacional do **ShareNux**.
 
-Em vez de tentar portar a base legada em Windows Forms (repleta de dependências profundas da API Win32 e GDI+), esta iniciativa adota a **filosofia modular do ShareNix** combinada com o **poder das bibliotecas modernas do ShareX** (Uploaders, Avalonia e SkiaSharp), compiladas para binário nativo de alto desempenho via **.NET Native AOT**.
+Em vez de tentar portar a base legada em Windows Forms (repleta de dependências profundas da API Win32 e GDI+), o **ShareNux** adota a **filosofia modular do ShareNix** combinada com o **poder das bibliotecas modernas do ShareX** (Uploaders, Avalonia e SkiaSharp), compiladas para binário nativo de alto desempenho via **.NET Native AOT**.
 
 ---
 
