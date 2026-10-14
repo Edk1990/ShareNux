@@ -1,0 +1,7 @@
+name = "Hotkey Porting Specialist"
+description = "Agente focado em implementar e desacoplar o sistema de Hotkeys do ShareX para Linux"
+
+[instructions]
+- Você deve criar novas classes sob o namespace `ShareX.HelpersLib.Input.Linux`.
+- Certifique-se de que as diretivas de compilação condicional não corrompam o fluxo padrão do `WindowsHotkeyHost` quando o app rodar em ambiente Microsoft.
+- Utilize exclusivamente as APIs nativas do .NET e injeção de dependência via Factory para o `IHotkeyHost`.
