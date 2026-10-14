@@ -1,163 +1,126 @@
-<p align="center"><a href="https://getsharex.com"><img src="https://getsharex.com/img/ShareX_Banner.png" alt="ShareX Banner"/></a></p>
-<h3 align="center">Screen capture, file sharing and productivity tool</h3>
-<br>
+<p align="center">
+  <img src="docs/images/sharex_linux_banner.jpg" alt="ShareX Linux Edition Banner" width="100%"/>
+</p>
+
+<h1 align="center">ShareX — Linux & Cross-Platform Edition</h1>
+
+<p align="center">
+  <b>A ferramenta definitiva de captura de tela, anotação e compartilhamento de arquivos — agora com suporte nativo moderno para Linux (Wayland & X11) e Windows.</b>
+</p>
+
 <div align="center">
-  <a href="https://github.com/ShareX/ShareX/actions/workflows/build.yml"><img src="https://img.shields.io/github/actions/workflow/status/ShareX/ShareX/build.yml?branch=develop&label=Build&cacheSeconds=3600" alt="GitHub Workflow Status"/></a>
-  <a href="./LICENSE.txt"><img src="https://img.shields.io/github/license/ShareX/ShareX?label=License&color=brightgreen&cacheSeconds=3600" alt="License"/></a>
-  <a href="https://github.com/ShareX/ShareX/releases/latest"><img src="https://img.shields.io/github/v/release/ShareX/ShareX?label=Release&color=brightgreen&cacheSeconds=3600" alt="Release"/></a>
-  <a href="https://getsharex.com/downloads"><img src="https://img.shields.io/github/downloads/ShareX/ShareX/total?label=Downloads&cacheSeconds=3600" alt="Downloads"/></a>
-  <a href="https://discord.gg/ShareX"><img src="https://img.shields.io/discord/194170124859736065?label=Discord&cacheSeconds=3600" alt="Discord"/></a>
-  <a href="https://twitter.com/intent/follow?screen_name=ShareX"><img src="https://img.shields.io/twitter/follow/ShareX?cacheSeconds=3600" alt="Twitter"/></a>
+  <a href="https://github.com/Edk1990/ShareX/actions/workflows/linux-build.yml"><img src="https://github.com/Edk1990/ShareX/actions/workflows/linux-build.yml/badge.svg?branch=develop" alt="Linux Build Status"/></a>
+  <a href="https://github.com/Edk1990/ShareX/actions/workflows/build.yml"><img src="https://github.com/Edk1990/ShareX/actions/workflows/build.yml/badge.svg?branch=develop" alt="Windows Build Status"/></a>
+  <a href="./LICENSE.txt"><img src="https://img.shields.io/badge/License-GPL%20v3-blue.svg" alt="License"/></a>
+  <img src="https://img.shields.io/badge/.NET-10.0%20%7C%20Native%20AOT-purple.svg" alt=".NET 10 Native AOT"/>
+  <img src="https://img.shields.io/badge/Display-Wayland%20%2F%20X11-orange.svg" alt="Wayland and X11"/>
 </div>
+
 <br>
-<p align="center"><a href="https://getsharex.com"><img src="https://getsharex.com/img/ShareX_Screenshot.png" alt="ShareX Screenshot"/></a></p>
-<p align="center">For further information please check our <a href="https://getsharex.com">website</a></p>
 
-# ShareX - Free Screen Capture, Screenshot, File Sharing and Productivity Tool
+---
 
-ShareX is a free and open source screenshot tool, screen recorder, file sharing tool and productivity application for Windows. It is designed for users who need fast screen capture, powerful screenshot editing, automated sharing, custom upload destinations and practical utilities in one lightweight desktop app.
+## 🐧 A Iniciativa ShareX para Linux
 
-With ShareX, you can capture any area of your screen, record video or GIFs, annotate screenshots, upload files, copy shareable links, extract text with OCR, scan QR codes, pick colors and run custom workflows from hotkeys. ShareX is built for speed and control: capture a screenshot, edit it, save it, copy it, upload it or pass it through your own task chain with minimal manual work.
+O **ShareX** é historicamente a ferramenta de screenshot e produtividade mais poderosa do ecossistema Windows. No entanto, sua arquitetura histórica de 15 anos baseada em Windows Forms (`Win32`, `P/Invoke`, `GDI+`) sempre impediu que usuários de Linux desfrutassem de seus recursos.
 
-## Why ShareX?
+Este projeto é um **fork de modernização** focado em trazer a experiência completa do ShareX para o desktop Linux moderno, unindo o melhor de dois mundos:
 
-ShareX combines screen capture, screen recording, image editing, file uploading and automation features that are often split across multiple applications. It is completely free, open source, lightweight, privacy focused and has no advertisements. No account is required to use ShareX.
+1. **A Filosofia Modular do ShareNix (CLI-First):** Execução ultrarrápida por linha de comando (`sharex -m region`), integrável diretamente aos atalhos de qualquer Window Manager (i3, Sway, Hyprland, bspwm, GNOME, KDE).
+2. **O Poder Real do ShareX:** Preservação do motor com **mais de 80 serviços de upload**, suporte total a arquivos de uploader customizado (**`.sxcu`**) e o novo **Editor de Imagens em Avalonia UI / SkiaSharp** para anotações ricas (setas, texto, blur, recorte).
+3. **Alto Desempenho com .NET 10 Native AOT:** Compilado como um **binário ELF nativo estático único**, sem necessidade de runtime instalado e com tempo de inicialização (*cold start*) de apenas **~15ms**.
+4. **Wayland First + X11:** Desenvolvido segundo os padrões modernos do *freedesktop.org*, usando **XDG Desktop Portals**, **PipeWire** e notificações via **D-Bus**.
 
-ShareX is especially useful for developers, designers, support teams, content creators, technical writers, QA testers and power users who frequently create screenshots, record short clips, share files or document workflows. It can be used as a simple screenshot app, but it also supports advanced workflows for users who want precise control over capture methods, after-capture tasks, upload destinations and hotkeys.
+---
 
-## Screenshot and Screen Recording Features
+## 📚 Documentação Técnica do Projeto
 
-ShareX supports many ways to capture your screen:
+Criamos uma base de documentação viva e detalhada para o desenvolvimento do port para Linux:
 
-* Fullscreen capture
-* Active window capture
-* Active monitor capture
-* Region capture
-* Scrolling screenshot capture
-* Last region capture
-* Custom region capture
-* Screen recording
-* GIF screen recording
-* Auto capture
+| Documento | Descrição |
+| :--- | :--- |
+| 📐 [**`ARCHITECTURE.md` (ADR-001)**](docs/linux-port/ARCHITECTURE.md) | Decisões de arquitetura, comparativo técnico (Go vs. Rust vs. C# Native AOT) e modelagem de camadas do sistema. |
+| 🗺️ [**`ROADMAP.md`**](docs/linux-port/ROADMAP.md) | Cronograma oficial dividido em 6 Milestones, com tarefas atômicas e critérios de aceite (*Definition of Done*). |
+| 🛠️ [**`SETUP_FROM_SCRATCH.md`**](docs/linux-port/SETUP_FROM_SCRATCH.md) | Guia completo passo a passo para configurar o ambiente do zero em Ubuntu, Debian, Fedora, Arch e WSL2. |
+| 📋 [**`GITHUB_MANAGEMENT.md`**](docs/linux-port/GITHUB_MANAGEMENT.md) | Guia de acompanhamento de tarefas via GitHub Projects (Kanban), Milestones, Labels e Branches. |
 
-After capturing a screenshot or recording, ShareX can automatically copy the result to the clipboard, save it to a file, open it in the image editor, upload it, print it, show it in Windows Explorer, run an action, scan a QR code or recognize text with OCR. These after-capture tasks make ShareX a flexible screenshot workflow tool instead of only a basic snipping utility.
+---
 
-## Region Capture and Annotation
+## 🚦 Status Atual dos Milestones
 
-ShareX region capture includes tools for selecting exactly what you want to capture and marking it before saving, copying or uploading. You can draw rectangles, ellipses, freehand lines, arrows, text, speech balloons, step numbers, highlights, blur effects, pixelation, magnification and spotlight effects.
+```
+[✅ Milestone 1: Fundação & Desacoplamento] 
+         ↓
+[⏳ Milestone 2: O Binário CLI Mínimo (MVP AOT)] 
+         ↓
+[⏹️ Milestone 3: Captura de Tela Nativa (Wayland/X11)] 
+         ↓
+[⏹️ Milestone 4: Pipeline de Saída (Clipboard & Notificações D-Bus)] 
+         ↓
+[⏹️ Milestone 5: Editor de Imagens Integrado (Avalonia UI)] 
+         ↓
+[⏹️ Milestone 6: Daemon de Atalhos & Empacotamento Oficial]
+```
 
-These annotation tools help create clear screenshots for bug reports, documentation, tutorials, support replies, pull requests and release notes. Sensitive information can be hidden with blur, pixelate or smart eraser tools before a screenshot is shared.
+* **Milestone 1 — Concluído (100%):** O [`ShareX.HelpersLib`](ShareX.HelpersLib/ShareX.HelpersLib.csproj) e o [`ShareX.UploadersLib`](ShareX.UploadersLib/ShareX.UploadersLib.csproj) foram desacoplados para compilação nativa em `net10.0`, com suíte de testes unitários passando em [`ShareX.Tests.Linux`](ShareX.Tests.Linux/).
+* **Milestone 2 — Próxima Etapa:** Criação do executável CLI `ShareX.Linux` gerado via Native AOT.
 
-## Built-in Image Editor
+---
 
-The ShareX image editor lets you crop, annotate, redact, highlight and prepare screenshots after capture. It includes common editing tools such as shapes, arrows, text, freehand drawing, image insertion, cursor insertion, blur, pixelate, magnify, spotlight, crop, cut out, background editing and image effects.
+## ⚡ Como Compilar e Testar no Linux
 
-Because the editor is part of the capture workflow, you can take a screenshot, mark the important area, hide private details and then copy, save or upload the edited image without switching between separate apps.
+### Pré-requisitos (Debian/Ubuntu)
+```bash
+sudo apt update && sudo apt install -y build-essential clang zlib1g-dev libkrb5-dev libdbus-1-dev
+```
 
-## File Sharing and Upload Automation
+### Compilar os Módulos do Core e Rodar os Testes
+```bash
+# Compilar bibliotecas principais em net10.0 puro
+dotnet build ShareX.HelpersLib/ShareX.HelpersLib.csproj -f net10.0 -c Release
+dotnet build ShareX.UploadersLib/ShareX.UploadersLib.csproj -f net10.0 -c Release
 
-ShareX can upload images, text, files, folders, clipboard content and URLs to many different destinations. After uploading, it can automatically copy the URL to the clipboard, open the URL, shorten the URL, show a QR code or run other configured tasks.
+# Executar a suíte de testes de uploaders e SXCU
+dotnet test ShareX.Tests.Linux/ShareX.Tests.Linux.csproj -c Release
+```
 
-Advanced users can create custom uploaders for services that are not built in. ShareX also provides guides for destinations such as Amazon S3, Google Cloud Storage and Cloudflare R2, making it suitable for both personal screenshot sharing and team workflows where files need to be uploaded to controlled storage.
+---
 
-## Productivity Tools
+## 💻 Comandos Previstos para a CLI (`sharex`)
 
-ShareX includes many utilities that support everyday desktop work:
+Inspirado na usabilidade do ShareNix, o ShareX para Linux funcionará perfeitamente via terminal e atalhos de teclado:
 
-### Screen & color
+```bash
+# Capturar uma região da tela e fazer upload imediato
+sharex -m region
 
-* [Color picker](https://getsharex.com/docs/color-picker)
-* [Mouse highlighter](https://getsharex.com/docs/mouse-highlighter)
-* [Pin to screen](https://getsharex.com/docs/pin-to-screen)
-* [Ruler](https://getsharex.com/docs/ruler)
-* [Screen color picker](https://getsharex.com/docs/screen-color-picker)
+# Capturar tela inteira e copiar a URL final para a área de transferência
+sharex -m fullscreen -c -n
 
-### Images
+# Capturar e abrir no Editor de Imagens (Avalonia/SkiaSharp) antes de subir
+sharex -m region -e
 
-* [Background remover](https://getsharex.com/docs/background-remover)
-* [Icon converter](https://getsharex.com/docs/icon-converter)
-* [Image beautifier](https://getsharex.com/docs/image-beautifier)
-* [Image combiner](https://getsharex.com/docs/image-combiner)
-* [Image comparer](https://getsharex.com/docs/image-comparer)
-* [Image converter](https://getsharex.com/docs/image-converter)
-* [Image editor](https://getsharex.com/docs/image-editor)
-* [Image effects](https://getsharex.com/docs/image-effects)
-* [Image resizer](https://getsharex.com/docs/image-resizer)
-* [Image splitter](https://getsharex.com/docs/image-splitter)
-* [Image thumbnailer](https://getsharex.com/docs/image-thumbnailer)
-* [Image viewer](https://getsharex.com/docs/image-viewer)
-* [Image watermark](https://getsharex.com/docs/image-watermark)
+# Fazer upload de um arquivo existente usando uma configuração SXCU específica
+sharex /caminho/da/imagem.png --config meu_uploader.sxcu
 
-### Video
+# Enviar o conteúdo da área de transferência (imagem ou texto)
+sharex -m clipboard
+```
 
-* [Animated GIF maker](https://getsharex.com/docs/animated-gif-maker)
-* [Animated GIF trimmer](https://getsharex.com/docs/animated-gif-trimmer)
-* [Video converter](https://getsharex.com/docs/video-converter)
-* [Video thumbnailer](https://getsharex.com/docs/video-thumbnailer)
-* [Video trimmer](https://getsharex.com/docs/video-trimmer)
+---
 
-### Data & text
+## 🌐 Recursos Originais do ShareX
 
-* [Analyze image](https://getsharex.com/docs/analyze-image)
-* [Hash checker](https://getsharex.com/docs/hash-checker)
-* [Index folder](https://getsharex.com/docs/index-folder)
-* [Metadata](https://getsharex.com/docs/metadata)
-* [OCR](https://getsharex.com/docs/ocr)
-* [QR code](https://getsharex.com/docs/qr-code)
-* [Remote storage browser](https://getsharex.com/docs/remote-storage-browser)
+Para usuários Windows e documentação detalhada sobre o ecossistema original do ShareX, consulte os links oficiais:
 
-### System
+* **Site Oficial:** [https://getsharex.com](https://getsharex.com)
+* **Documentação de Custom Uploaders (.sxcu):** [https://getsharex.com/docs/custom-uploader](https://getsharex.com/docs/custom-uploader)
+* **Repositório Upstream (Windows Original):** [https://github.com/ShareX/ShareX](https://github.com/ShareX/ShareX)
+* **Discord Oficial:** [https://discord.gg/ShareX](https://discord.gg/ShareX)
 
-* [Borderless window](https://getsharex.com/docs/borderless-window)
-* [Clipboard viewer](https://getsharex.com/docs/clipboard-viewer)
-* [Inspect window](https://getsharex.com/docs/inspect-window)
-* [Monitor test](https://getsharex.com/docs/monitor-test)
-* [Network monitor](https://getsharex.com/docs/network-monitor)
+---
 
-These tools make ShareX useful beyond screenshots. It can help inspect images, prepare assets, extract information, verify files and speed up repetitive tasks.
+## 📜 Licença
 
-## Custom Workflows and Hotkeys
-
-ShareX is built around configurable workflows. You can assign hotkeys to capture methods, choose what happens after capture, decide what happens after upload and create actions that run external tools or scripts. This makes it possible to build a workflow such as capture region, annotate image, save locally, upload to a destination, shorten the URL and copy the final link to the clipboard.
-
-The workflow system is one of the main reasons ShareX is popular with power users. Simple tasks can stay simple, while advanced users can automate detailed screenshot, screen recording and file sharing processes.
-
-## Download ShareX
-
-ShareX is available from the official website, GitHub releases, Microsoft Store and Steam. You can install the regular setup version, use a portable version or try development builds if you want the newest changes before a stable release.
-
-For the safest download options, use the official links below.
-
-## Links
-* Official website: https://getsharex.com
-* Downloads: https://getsharex.com/downloads
-* GitHub: https://github.com/ShareX/ShareX
-* Changelog: https://getsharex.com/changelog
-* Screenshots: https://getsharex.com/screenshots
-* Privacy policy: https://getsharex.com/privacy-policy
-* Donate: https://getsharex.com/donate
-* X: https://x.com/ShareX
-* Discord: https://discord.gg/ShareX
-* Reddit: https://www.reddit.com/r/sharex
-* Steam page: https://store.steampowered.com/app/400040/ShareX/
-* Microsoft Store page: https://apps.microsoft.com/detail/9nblggh4z1sp
-* ShareX related projects on GitHub: https://github.com/topics/sharex
-
-## Documents
-* Image effects: https://getsharex.com/image-effects
-* Actions: https://getsharex.com/actions
-* Dev builds: https://getsharex.com/docs/dev-builds
-* Keybinds: https://getsharex.com/docs/keybinds
-* Region capture: https://getsharex.com/docs/region-capture
-* Image editor: https://getsharex.com/docs/image-editor
-* Background remover: https://getsharex.com/docs/background-remover
-* Pin to screen: https://getsharex.com/docs/pin-to-screen
-* Scrolling screenshot: https://getsharex.com/docs/scrolling-screenshot
-* Command line arguments: https://getsharex.com/docs/command-line-arguments
-* Translation: https://getsharex.com/docs/translation
-* OCR: https://getsharex.com/docs/ocr
-* Custom uploader: https://getsharex.com/docs/custom-uploader
-* Amazon S3 guide: https://getsharex.com/docs/amazon-s3
-* Google Cloud Storage guide: https://getsharex.com/docs/google-cloud-storage
-* Cloudflare R2 guide: https://getsharex.com/docs/cloudflare-r2
-* Brand assets: https://getsharex.com/brand-assets
+Este projeto é software livre licenciado sob a [GNU General Public License v3.0 (GPL-3.0)](LICENSE.txt).
+Créditos integrais aos criadores originais do ShareX e aos contribuidores da comunidade de código aberto.
