@@ -28,12 +28,12 @@
 **Objetivo:** Garantir que as bibliotecas de lógica de negócio e upload do ShareX compilem de forma limpa em ambiente Linux (`net10.0`), isolando qualquer chamada legada do Windows sob diretivas de compilação.
 
 ### Tarefas
-- [ ] **[M1-T1]** Auditar e ajustar [`ShareX.HelpersLib.csproj`](file:///c:/ShareX/ShareX.HelpersLib/ShareX.HelpersLib.csproj) para multi-targeting (`<TargetFrameworks>net10.0;net10.0-windows</TargetFrameworks>`).
-- [ ] **[M1-T2]** Condicionar a dependência de `Microsoft.WindowsDesktop.App` no `HelpersLib` apenas para a plataforma Windows (`Condition="$([MSBuild]::IsOSPlatform('windows'))"`).
-- [ ] **[M1-T3]** Isolar métodos legados de `System.Drawing.Common` (impressão e ícones shell) no `HelpersLib` com `#if WINDOWS`.
-- [ ] **[M1-T4]** Ajustar [`ShareX.UploadersLib.csproj`](file:///c:/ShareX/ShareX.UploadersLib/ShareX.UploadersLib.csproj) para multi-targeting (`net10.0;net10.0-windows`).
-- [ ] **[M1-T5]** Isolar classes de uploaders dependentes de WinForms (ex: diálogo OAuth antigo do Google Drive/Dropbox) para usar URLs diretas no Linux.
-- [ ] **[M1-T6]** Criar projeto de teste unitário `ShareX.Tests.Linux` executando em `net10.0` para validar o carregamento e parsing de arquivos `.sxcu`.
+- [x] **[M1-T1]** Auditar e ajustar [`ShareX.HelpersLib.csproj`](file:///c:/ShareX/ShareX.HelpersLib/ShareX.HelpersLib.csproj) para multi-targeting (`<TargetFrameworks>net10.0;net10.0-windows</TargetFrameworks>`).
+- [x] **[M1-T2]** Condicionar a dependência de `Microsoft.WindowsDesktop.App` no `HelpersLib` apenas para a plataforma Windows (`Condition="$(TargetFramework.EndsWith('-windows'))"`).
+- [x] **[M1-T3]** Isolar métodos legados de `System.Drawing.Common` (impressão e ícones shell) no `HelpersLib` com `#if WINDOWS`.
+- [x] **[M1-T4]** Ajustar [`ShareX.UploadersLib.csproj`](file:///c:/ShareX/ShareX.UploadersLib/ShareX.UploadersLib.csproj) para multi-targeting (`net10.0;net10.0-windows`).
+- [x] **[M1-T5]** Isolar classes de uploaders dependentes de WinForms (ex: diálogo OAuth antigo do Google Drive/Dropbox) para usar URLs diretas no Linux.
+- [x] **[M1-T6]** Criar projeto de teste unitário `ShareX.Tests.Linux` executando em `net10.0` para validar o carregamento e parsing de arquivos `.sxcu`.
 
 ### Critérios de Aceite (Definition of Done)
 1. `dotnet build ShareX.HelpersLib -f net10.0` compila com **0 erros**.

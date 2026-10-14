@@ -44,6 +44,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShareX.Tools", "ShareX.Tool
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShareX.ScreenRecordingLib", "ShareX.ScreenRecordingLib\ShareX.ScreenRecordingLib.csproj", "{00CA5B81-08A4-4AAD-A3AB-5F8F663F6B4A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShareX.Tests.Linux", "ShareX.Tests.Linux\ShareX.Tests.Linux.csproj", "{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM64 = Debug|ARM64
@@ -624,6 +626,46 @@ Global
 		{00CA5B81-08A4-4AAD-A3AB-5F8F663F6B4A}.Steam|Any CPU.Build.0 = Steam|x64
 		{00CA5B81-08A4-4AAD-A3AB-5F8F663F6B4A}.Steam|x86.ActiveCfg = Steam|x64
 		{00CA5B81-08A4-4AAD-A3AB-5F8F663F6B4A}.Steam|x86.Build.0 = Steam|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.Debug|ARM64.Build.0 = Debug|ARM64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.Debug|x64.ActiveCfg = Debug|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.Debug|x64.Build.0 = Debug|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.Debug|Any CPU.Build.0 = Debug|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.Debug|x86.ActiveCfg = Debug|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.Debug|x86.Build.0 = Debug|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.MicrosoftStore|ARM64.ActiveCfg = MicrosoftStore|ARM64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.MicrosoftStore|ARM64.Build.0 = MicrosoftStore|ARM64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.MicrosoftStore|x64.ActiveCfg = MicrosoftStore|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.MicrosoftStore|x64.Build.0 = MicrosoftStore|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.MicrosoftStore|Any CPU.ActiveCfg = MicrosoftStore|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.MicrosoftStore|Any CPU.Build.0 = MicrosoftStore|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.MicrosoftStore|x86.ActiveCfg = MicrosoftStore|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.MicrosoftStore|x86.Build.0 = MicrosoftStore|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.MicrosoftStoreDebug|ARM64.ActiveCfg = MicrosoftStoreDebug|ARM64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.MicrosoftStoreDebug|ARM64.Build.0 = MicrosoftStoreDebug|ARM64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.MicrosoftStoreDebug|x64.ActiveCfg = MicrosoftStoreDebug|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.MicrosoftStoreDebug|x64.Build.0 = MicrosoftStoreDebug|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.MicrosoftStoreDebug|Any CPU.ActiveCfg = MicrosoftStoreDebug|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.MicrosoftStoreDebug|Any CPU.Build.0 = MicrosoftStoreDebug|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.MicrosoftStoreDebug|x86.ActiveCfg = MicrosoftStoreDebug|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.MicrosoftStoreDebug|x86.Build.0 = MicrosoftStoreDebug|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.Release|ARM64.ActiveCfg = Release|ARM64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.Release|ARM64.Build.0 = Release|ARM64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.Release|x64.ActiveCfg = Release|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.Release|x64.Build.0 = Release|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.Release|Any CPU.ActiveCfg = Release|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.Release|Any CPU.Build.0 = Release|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.Release|x86.ActiveCfg = Release|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.Release|x86.Build.0 = Release|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.Steam|ARM64.ActiveCfg = Steam|ARM64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.Steam|ARM64.Build.0 = Steam|ARM64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.Steam|x64.ActiveCfg = Steam|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.Steam|x64.Build.0 = Steam|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.Steam|Any CPU.ActiveCfg = Steam|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.Steam|Any CPU.Build.0 = Steam|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.Steam|x86.ActiveCfg = Steam|x64
+		{0650F6B6-FC39-4CEA-9DA0-27DD1AD619EC}.Steam|x86.Build.0 = Steam|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
